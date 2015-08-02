@@ -3,10 +3,11 @@ http://osgav.github.io/archive.html
 http://osgav.github.io/atom.xml
 http://osgav.github.io/categories.html
 http://osgav.github.io/index.html
+http://osgav.github.io/blog/outside/index.html
 http://osgav.github.io/pages.html
 http://osgav.github.io/rss.xml
 http://osgav.github.io/sitemap.txt
 http://osgav.github.io/tags.html
 
-http://osgav.github.io/2015/08/02/hiiii
+http://osgav.github.io/outside/2015/08/02/hiiii
 http://osgav.github.io/lessons/2011/12/29/jekyll-introduction
