@@ -5,20 +5,20 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-  	<meta property="og:title" content=" $ whois osgav &middot;  osgav" />
+  	<meta property="og:title" content=" Hugo Markdown Cheatsheet &middot;  osgav" />
   	<meta property="og:site_name" content="osgav" />
-  	<meta property="og:url" content="https://osgav.run/post/whois-osgav/" />
+  	<meta property="og:url" content="https://osgav.run/page/hugo-markdown-cheatsheet/" />
 
     
   	<meta property="og:type" content="article" />
 
-    <meta property="og:article:published_time" content="2016-06-05T13:41:15Z" />
+    <meta property="og:article:published_time" content="2016-06-11T16:40:05Z" />
 
     
     
 
   <title>
-     $ whois osgav &middot;  osgav
+     Hugo Markdown Cheatsheet &middot;  osgav
   </title>
 
     <meta name="description" content="systems engineer, linux &amp; python enthusiast, occasional blogger..." />
@@ -42,7 +42,7 @@
     
     <meta name="generator" content="Hugo 0.15" />
 
-    <link rel="canonical" href="https://osgav.run/post/whois-osgav/" />
+    <link rel="canonical" href="https://osgav.run/page/hugo-markdown-cheatsheet/" />
 
     
 
@@ -70,7 +70,7 @@
             </li>
         
             
-            <li class="nav-opened nav-current" role="presentation">
+            <li class="nav-opened" role="presentation">
             	<a href="https://osgav.run/post/whois-osgav/">$ whois osgav</a>
             </li>
         
@@ -98,17 +98,22 @@
 
 
 
+
 <header class="main-header post-head no-cover">
-  <nav class="main-nav clearfix">
+    <nav class="main-nav overlay clearfix">
 
 
-  
-      <a class="blog-logo" href="https://osgav.run/"><img src="https://osgav.run/images/tux.jpg" alt="Home" /></a>
-  
-  
-      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
-  
-  </nav>
+      
+        <a class="blog-logo" href="https://osgav.run/"><img src="https://osgav.run/images/tux.jpg" alt="Home" /></a>
+      
+      
+          <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+      
+    </nav>
+
+    
+
+
 </header>
 
 
@@ -118,34 +123,76 @@
 
 
 
-  <article class="post post">
-
+  <article class="post page">
     <header class="post-header">
-        <h1 class="post-title">$ whois osgav</h1>
+      <nav class="breadcrumb">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </nav>
+
+
+        <h1 class="post-title">Hugo Markdown Cheatsheet</h1>
         <small></small>
 
         <section class="post-meta">
-        
-          <time class="post-date" datetime="2016-06-05T13:41:15Z">
-            Jun 5, 2016
-          </time>
         
          
         </section>
     </header>
 
     <section class="post-content">
-      <p>As a Global Availability &amp; Performance Engineer, or more generally a Systems Engineer, I find myself using a multitude of web portals, tools and API integrations to monitor, analyze and optimize the health of a high traffic global travel search engine.</p>
 
-<p>This engine is comprised of various website, API and backend systems. There are different systems for monitoring the operation (CDN &amp; GLB), availability, performance (RUM &amp; APM), OS metrics and business KPIs across all of these. My team are the administrators for the availability and performance systems, and we work on creating Global Health views across all of these systems - also integrating with alerting solutions - to give the developers building and running them a better idea of how their products are performing.</p>
 
-<p>We are a fairly small team spread across the globe, with a couple of engineers on the <sup>24</sup>&frasl;<sub>7</sub> support rota and another two engineers in HQ doing in-hours support. We always have some BI analysts nearby, and a familiar selection of <sup>24</sup>&frasl;<sub>7</sub> support engineers but generally work with anyone and everyone from Engineering and some other business areas such as Growth and Employee &amp; Developer Enablement.</p>
+<p><strong>TL;DR</strong> there is a cheatsheet for Hugo Markdown available in my github (actually not yet, but will be soon), transcribed from <a href="https://sourceforge.net/p/hugo-generator/wiki/markdown_syntax/">https://sourceforge.net/p/hugo-generator/wiki/markdown_syntax/</a></p>
 
-<pre><code>SEE ALSO
-      ZER0D0TS(8)
+<p>You can make this particularly handy by doing something like this:</p>
+
+<pre><code>$ tree osgav/content
+osgav/content
+├── page
+│   ├── hugo-markdown-cheatsheet.md
+│   └── projects.md
+└── post
+    ├── cheatsheet.md
+    ├── whois-osgav.md
+    └── zerodots.md
 </code></pre>
 
-<p>&lt;<a href="https://osgav.run/post/zerodots">https://osgav.run/post/zerodots</a>&gt;</p>
+<p>Keep a copy of <code>cheatsheet.md</code> as a draft post, with a date in the future - this will make it the most recent post in your blog, so it will be the first post you see when testing locally with <code>hugo server</code> (and passing in the <code>--buildDrafts</code> parameter).</p>
+
+<pre><code>$ head content/post/cheatsheet.md
++++
+author = &quot;osgav&quot;
+date = &quot;2070-01-01T00:00:00Z&quot;
+draft = true
+slug = &quot;cheatsheet&quot;
+tags = [&quot;formatting-cheatsheet-dont-undraft&quot;]
+title = &quot;cheatsheet&quot;
+
++++
+</code></pre>
+
+<p><img src="https://osgav.run/images/hugo_cheatsheet_draft.png" alt="hugo cheatsheet draft" />
+<img src="https://osgav.run/images/hugo_cheatsheet.png" alt="hugo cheatsheet" /></p>
+
+
+
+
+
+
+
+
 
     </section>
 
@@ -179,11 +226,29 @@
 
 
     
+<section class="share">
+  <h4>Share this page</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Hugo%20Markdown%20Cheatsheet&amp;url=https%3a%2f%2fosgav.run%2fpage%2fhugo-markdown-cheatsheet%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fosgav.run%2fpage%2fhugo-markdown-cheatsheet%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fosgav.run%2fpage%2fhugo-markdown-cheatsheet%2f&amp;description=Hugo%20Markdown%20Cheatsheet"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fosgav.run%2fpage%2fhugo-markdown-cheatsheet%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
 
 
     
-
-
 
 
   </footer>

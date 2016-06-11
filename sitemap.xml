@@ -3,8 +3,23 @@
   
   <url>
     <loc>https://osgav.run/</loc>
-    <lastmod>2016-06-05T13:41:15+00:00</lastmod>
+    <lastmod>2016-06-11T16:40:05+00:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://osgav.run/page/hugo-markdown-cheatsheet/</loc>
+    <lastmod>2016-06-11T16:40:05+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://osgav.run/page/projects/</loc>
+    <lastmod>2016-06-11T16:39:58+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://osgav.run/post/zerodots/</loc>
+    <lastmod>2016-06-11T15:50:35+00:00</lastmod>
   </url>
   
   <url>
