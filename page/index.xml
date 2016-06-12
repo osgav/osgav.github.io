@@ -17,7 +17,9 @@
       <guid>https://osgav.run/page/projects/hugo-build-and-publish-workflow/</guid>
       <description>
 
-&lt;p&gt;&lt;a href=&#34;https://osgav.run/page/projects&#34;&gt;&amp;lt; back to projects&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://osgav.run/page/projects&#34;&gt;&amp;lt; back to projects&lt;/a&gt;&lt;br /&gt;
+&lt;strong&gt;&lt;code&gt;created: 11/06/2016&lt;/code&gt;&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;&lt;code&gt;updated: 12/06/2016&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -108,7 +110,76 @@ echo &amp;quot;osgav.run&amp;quot; &amp;gt; public/CNAME
 
 &lt;h3 id=&#34;publishing:b0d24be26c981e452cbdca0cff1978e4&#34;&gt;publishing&lt;/h3&gt;
 
-&lt;p&gt;I haven&amp;rsquo;t scripted the publishing steps yet - need to rename some things for better structuring - &lt;em&gt;like cleanly deploying another hugo site in another repo&amp;rsquo;s &lt;code&gt;gh-pages&lt;/code&gt; branch or simply not messing up this site&amp;hellip;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;s&gt;I haven&amp;rsquo;t scripted the publishing steps yet - need to rename some things for better structuring - &lt;em&gt;like cleanly deploying another hugo site in another repo&amp;rsquo;s &lt;code&gt;gh-pages&lt;/code&gt; branch or simply not messing up this site&amp;hellip;&lt;/em&gt;&lt;/s&gt;&lt;/p&gt;
+
+&lt;p&gt;So my &lt;strong&gt;&lt;em&gt;build workflow&lt;/em&gt;&lt;/strong&gt; has advanced a little since the beginning of this tale and some renaming has taken place as I hinted at above. With LiveReload now working (just a hitch with how I was editing my files) and another couple of scripts (one that swallows up &lt;code&gt;build-public&lt;/code&gt;) the &lt;strong&gt;&lt;em&gt;build and publish workflow&lt;/em&gt;&lt;/strong&gt; looks something like this:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Creating new content or editing drafts &amp;ndash;&amp;gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cd osgav-source
+$ ./hugo/01-serve-withdrafts
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;open another terminal&amp;gt;
+$ vagrant ssh
+$ cd /vagrant/workbench/osgav-source
+$ hugo -t casper new post/next-new-post.md
+$ vi content/post/next-new-post.md
+&amp;lt;update content and save&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;With the &lt;code&gt;vi&lt;/code&gt; terminal on one side of the screen and a web browser on the other, I can see the changes immediately after &lt;code&gt;:w&lt;/code&gt; in &lt;code&gt;vi&lt;/code&gt;. Really awesome!&lt;/p&gt;
+
+&lt;p&gt;And to publish that new content live, we follow the same workflow as below&amp;hellip; if I run &lt;code&gt;02-serve&lt;/code&gt; I will no longer see my &lt;a href=&#34;https://osgav.run/page/projects/hugo-markdown-cheatsheet&#34;&gt;cheatsheet&lt;/a&gt;, but if I notice the latest post isn&amp;rsquo;t there I can use the &lt;code&gt;hugo undraft&lt;/code&gt; command and it&amp;rsquo;ll appear immediately.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Simple update to live page like updating an image or a typo &amp;ndash;&amp;gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;edit image accordingly and save it&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;if image filename has changed, update posts/pages referencing filename&amp;gt;
+&amp;lt;update posts/pages with typo&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ./hugo/02-serve # to preview locally if necessary (unlikey for typo)
+$ ./hugo/03-publish-stage
+$ ./hugo/04-publish-prod &amp;quot;update typo in recent post&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So where did the &lt;code&gt;build-public&lt;/code&gt; script go? It&amp;rsquo;s purpose, described above, is in fact the first step towards publishing. You can test all of the site completely locally with &lt;code&gt;hugo server&lt;/code&gt; without having to build the &lt;code&gt;public&lt;/code&gt; directory. As such it made sense to include its commands in a more complete script: &lt;code&gt;03-publish-stage&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/bin/bash
+
+# delete old &#39;public&#39; build
+rm -rf public/
+
+echo -e &amp;quot;\n--------------------------------------------------\n&amp;quot;
+echo -e &amp;quot;building hugo site --&amp;gt; public\n&amp;quot;
+
+hugo --theme=casper
+
+echo -e &amp;quot;\n--------------------------------------------------\n&amp;quot;
+echo &amp;quot;adding CNAME for osgav.run&amp;quot;
+touch public/CNAME
+echo &amp;quot;osgav.run&amp;quot; &amp;gt; public/CNAME
+
+echo -e &amp;quot;copying hugo site public --&amp;gt; osgav-root-public\n&amp;quot;
+rm -rf ../osgav-root-public/*
+cp -r public/* ../osgav-root-public/
+
+
+echo -e &amp;quot;\n--------------------------------------------------\n&amp;quot;
+echo -e &amp;quot;$ git status osgav-root-public\n&amp;quot;
+
+cd ../osgav-root-public
+git status
+
+echo -e &amp;quot;\n--------------------------------------------------\n&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;hr /&gt;
 
@@ -122,21 +193,22 @@ echo &amp;quot;osgav.run&amp;quot; &amp;gt; public/CNAME
       <pubDate>Sat, 11 Jun 2016 16:40:05 +0000</pubDate>
       
       <guid>https://osgav.run/page/projects/hugo-markdown-cheatsheet/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://osgav.run/page/projects&#34;&gt;&amp;lt; back to projects&lt;/a&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;a href=&#34;https://osgav.run/page/projects&#34;&gt;&amp;lt; back to projects&lt;/a&gt;&lt;br /&gt;
+&lt;strong&gt;&lt;code&gt;created: 11/06/2016&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
-&lt;p&gt;&lt;strong&gt;TL;DR&lt;/strong&gt; there is a cheatsheet for Hugo Markdown available in my github (actually not yet, but will be soon), transcribed from &lt;a href=&#34;https://sourceforge.net/p/hugo-generator/wiki/markdown_syntax/&#34;&gt;https://sourceforge.net/p/hugo-generator/wiki/markdown_syntax/&lt;/a&gt; (not all of it - and a couple of bits from gohugo docs)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;TL;DR&lt;/strong&gt; there is a cheatsheet for Hugo Markdown available &lt;a href=&#34;https://raw.githubusercontent.com/osgav/osgav-source/master/content/post/cheatsheet.md&#34;&gt;in my github&lt;/a&gt;, transcribed from &lt;a href=&#34;https://sourceforge.net/p/hugo-generator/wiki/markdown_syntax/&#34;&gt;a guide here&lt;/a&gt; (not all of it mind) and a couple of bits from &lt;a href=&#34;https://gohugo.io/overview/introduction/&#34;&gt;gohugo docs&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;You can make this particularly handy by doing something like this:&lt;/p&gt;
+&lt;p&gt;You can make this particularly handy by keeping a &lt;code&gt;cheatsheet.md&lt;/code&gt; post like this:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ tree osgav/content
 osgav/content
 ├── page
-│   ├── hugo-markdown-cheatsheet.md
+│   ├── hugo-markdown-cheatsheet.md 
 │   └── projects.md
 └── post
-    ├── cheatsheet.md
+    ├── cheatsheet.md 
     ├── whois-osgav.md
     └── zerodots.md
 &lt;/code&gt;&lt;/pre&gt;
