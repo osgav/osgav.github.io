@@ -6,8 +6,100 @@
     <description>Recent content in Pages on osgav</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 11 Jun 2016 20:10:08 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 12 Jun 2016 21:33:09 +0000</lastBuildDate>
     <atom:link href="https://osgav.run/page/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Hugo Platform Runbook</title>
+      <link>https://osgav.run/page/projects/hugo-platform-runbook/</link>
+      <pubDate>Sun, 12 Jun 2016 21:33:09 +0000</pubDate>
+      
+      <guid>https://osgav.run/page/projects/hugo-platform-runbook/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://osgav.run/page/projects&#34;&gt;&amp;lt; back to projects&lt;/a&gt;&lt;br /&gt;
+&lt;strong&gt;&lt;code&gt;created: 12/06/2016&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;This is my runbook for operating my blog, based on the scripts I wrote to help with hugo building and publishing, you can read about these here:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://osgav.run/page/projects/hugo-build-and-publish-workflow&#34;&gt;Hugo Build and Publish Workflow&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://osgav.run/page/projects/hugo-markdown-cheatsheet&#34;&gt;Hugo Markdown Cheatsheet&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;download source and website &amp;ndash;&amp;gt;&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt; HTTPS authentication until I set up SSH authentication
+&amp;gt; Run from vagrant virtual machine at /vagrant/workbench
+$ git clone https://osgav@github.com/osgav/osgav-source.git osgav-source
+$ git clone https://osgav@github.com/osgav/osgav.github.io.git osgav-root-public
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;view cheatsheet &amp;ndash;&amp;gt;&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cd osgav-source
+$ ./hugo/01-serve-withdrafts
+&amp;gt; view blog in browser at http://192.168.56.2:1313 - cheatsheet is latest post
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;create new content and iterate on it &amp;ndash;&amp;gt;&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cd osgav-source
+$ ./hugo/01-serve-withdrafts
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt; open another terminal
+$ vagrant ssh
+$ cd /vagrant/workbench/osgav-source
+$ hugo -t casper new post/next-new-post.md
+$ vi content/post/next-new-post.md
+&amp;gt; update content and save
+&amp;gt; view blog in browser
+&amp;gt; update content and save
+&amp;gt; view blog in browser...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;publish content &amp;ndash;&amp;gt;&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ./hugo/02-serve
+&amp;gt; preview content locally
+&amp;gt; if your post/page is missing, then try
+$ hugo undraft post/next-new-post.md
+$ ./hugo/03-publish-stage
+$ ./hugo/04-publish-prod &amp;quot;posting next new post!&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;unpublish content &amp;ndash;&amp;gt;&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;update existing content (typo, update image) &amp;ndash;&amp;gt;&lt;br /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt; edit image accordingly and save it
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt; if image filename has changed, update posts/pages referencing filename
+&amp;gt; update posts/pages with typo
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ./hugo/02-serve
+&amp;gt; preview content locally if necessary - unlikely for typo
+$ ./hugo/03-publish-stage
+$ ./hugo/04-publish-prod &amp;quot;update typo in last post&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>Hugo Build and Publish Workflow</title>
@@ -194,7 +286,8 @@ echo -e &amp;quot;\n--------------------------------------------------\n&amp;quo
       
       <guid>https://osgav.run/page/projects/hugo-markdown-cheatsheet/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://osgav.run/page/projects&#34;&gt;&amp;lt; back to projects&lt;/a&gt;&lt;br /&gt;
-&lt;strong&gt;&lt;code&gt;created: 11/06/2016&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;strong&gt;&lt;code&gt;created: 11/06/2016&lt;/code&gt;&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;&lt;code&gt;updated: 12/06/2016&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -248,8 +341,9 @@ title = &amp;quot;cheatsheet&amp;quot;
 
 &lt;h5 id=&#34;this-blog:3c42bb4157bf51d85ae7ffc4e1685909&#34;&gt;this blog&lt;/h5&gt;
 
-&lt;p&gt;&lt;strong&gt;11/06/2016:&lt;/strong&gt; &lt;a href=&#34;https://osgav.run/page/projects/hugo-build-and-publish-workflow&#34;&gt;Hugo Build and Publish Workflow&lt;/a&gt; (in progress)&lt;br /&gt;
-&lt;strong&gt;11/06/2016:&lt;/strong&gt; &lt;a href=&#34;https://osgav.run/page/projects/hugo-markdown-cheatsheet&#34;&gt;Hugo Markdown Cheatsheet&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://osgav.run/page/projects/hugo-platform-runbook&#34;&gt;Hugo Platform Runbook&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://osgav.run/page/projects/hugo-build-and-publish-workflow&#34;&gt;Hugo Build and Publish Workflow&lt;/a&gt; (in progress)&lt;br /&gt;
+&lt;a href=&#34;https://osgav.run/page/projects/hugo-markdown-cheatsheet&#34;&gt;Hugo Markdown Cheatsheet&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

@@ -5,20 +5,20 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-  	<meta property="og:title" content=" $ cd projects &middot;  osgav" />
+  	<meta property="og:title" content=" Hugo Platform Runbook &middot;  osgav" />
   	<meta property="og:site_name" content="osgav" />
-  	<meta property="og:url" content="https://osgav.run/page/projects/" />
+  	<meta property="og:url" content="https://osgav.run/page/projects/hugo-platform-runbook/" />
 
     
   	<meta property="og:type" content="article" />
 
-    <meta property="og:article:published_time" content="2016-06-11T16:39:58Z" />
+    <meta property="og:article:published_time" content="2016-06-12T21:33:09Z" />
 
     
     
 
   <title>
-     $ cd projects &middot;  osgav
+     Hugo Platform Runbook &middot;  osgav
   </title>
 
     <meta name="description" content="systems engineer, linux &amp; python enthusiast, occasional blogger..." />
@@ -42,7 +42,7 @@
     
     <meta name="generator" content="Hugo 0.15" />
 
-    <link rel="canonical" href="https://osgav.run/page/projects/" />
+    <link rel="canonical" href="https://osgav.run/page/projects/hugo-platform-runbook/" />
 
     
 
@@ -70,7 +70,7 @@
             </li>
         
             
-            <li class="nav-opened nav-current" role="presentation">
+            <li class="nav-opened" role="presentation">
             	<a href="https://osgav.run/page/projects/">$ cd projects</a>
             </li>
         
@@ -133,9 +133,6 @@
         
         
         
-        <li><a href="https://osgav.run/page/projects/">$ cd projects</a></li>
-              
-        
         
         
         
@@ -145,7 +142,7 @@
       </nav>
 
 
-        <h1 class="post-title">$ cd projects</h1>
+        <h1 class="post-title">Hugo Platform Runbook</h1>
         <small></small>
 
         <section class="post-meta">
@@ -157,15 +154,89 @@
     <section class="post-content">
 
 
+<p><a href="https://osgav.run/page/projects">&lt; back to projects</a><br />
+<strong><code>created: 12/06/2016</code></strong></p>
 
+<hr />
 
-<p>Project pages for content outside of or accompanying blog posts</p>
+<p>This is my runbook for operating my blog, based on the scripts I wrote to help with hugo building and publishing, you can read about these here:</p>
 
-<h5 id="this-blog:3c42bb4157bf51d85ae7ffc4e1685909">this blog</h5>
-
-<p><a href="https://osgav.run/page/projects/hugo-platform-runbook">Hugo Platform Runbook</a><br />
-<a href="https://osgav.run/page/projects/hugo-build-and-publish-workflow">Hugo Build and Publish Workflow</a> (in progress)<br />
+<p><a href="https://osgav.run/page/projects/hugo-build-and-publish-workflow">Hugo Build and Publish Workflow</a><br />
 <a href="https://osgav.run/page/projects/hugo-markdown-cheatsheet">Hugo Markdown Cheatsheet</a></p>
+
+<blockquote>
+<p>download source and website &ndash;&gt;<br /></p>
+</blockquote>
+
+<pre><code>&gt; HTTPS authentication until I set up SSH authentication
+&gt; Run from vagrant virtual machine at /vagrant/workbench
+$ git clone https://osgav@github.com/osgav/osgav-source.git osgav-source
+$ git clone https://osgav@github.com/osgav/osgav.github.io.git osgav-root-public
+</code></pre>
+
+<blockquote>
+<p>view cheatsheet &ndash;&gt;<br /></p>
+</blockquote>
+
+<pre><code>$ cd osgav-source
+$ ./hugo/01-serve-withdrafts
+&gt; view blog in browser at http://192.168.56.2:1313 - cheatsheet is latest post
+</code></pre>
+
+<blockquote>
+<p>create new content and iterate on it &ndash;&gt;<br /></p>
+</blockquote>
+
+<pre><code>$ cd osgav-source
+$ ./hugo/01-serve-withdrafts
+</code></pre>
+
+<pre><code>&gt; open another terminal
+$ vagrant ssh
+$ cd /vagrant/workbench/osgav-source
+$ hugo -t casper new post/next-new-post.md
+$ vi content/post/next-new-post.md
+&gt; update content and save
+&gt; view blog in browser
+&gt; update content and save
+&gt; view blog in browser...
+</code></pre>
+
+<blockquote>
+<p>publish content &ndash;&gt;<br /></p>
+</blockquote>
+
+<pre><code>$ ./hugo/02-serve
+&gt; preview content locally
+&gt; if your post/page is missing, then try
+$ hugo undraft post/next-new-post.md
+$ ./hugo/03-publish-stage
+$ ./hugo/04-publish-prod &quot;posting next new post!&quot;
+</code></pre>
+
+<blockquote>
+<p>unpublish content &ndash;&gt;<br /></p>
+</blockquote>
+
+<pre><code>$ ...
+</code></pre>
+
+<blockquote>
+<p>update existing content (typo, update image) &ndash;&gt;<br /></p>
+</blockquote>
+
+<pre><code>&gt; edit image accordingly and save it
+</code></pre>
+
+<pre><code>&gt; if image filename has changed, update posts/pages referencing filename
+&gt; update posts/pages with typo
+</code></pre>
+
+<pre><code>$ ./hugo/02-serve
+&gt; preview content locally if necessary - unlikely for typo
+$ ./hugo/03-publish-stage
+$ ./hugo/04-publish-prod &quot;update typo in last post&quot;
+</code></pre>
 
 
 
@@ -207,9 +278,31 @@
 
 
     
+<section class="share">
+  <h4>Share this page</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Hugo%20Platform%20Runbook&amp;url=https%3a%2f%2fosgav.run%2fpage%2fprojects%2fhugo-platform-runbook%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fosgav.run%2fpage%2fprojects%2fhugo-platform-runbook%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fosgav.run%2fpage%2fprojects%2fhugo-platform-runbook%2f&amp;description=Hugo%20Platform%20Runbook"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fosgav.run%2fpage%2fprojects%2fhugo-platform-runbook%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
 
 
     
+
+
 
 
   </footer>
