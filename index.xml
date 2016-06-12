@@ -312,7 +312,18 @@ $ ./hugo/03-publish-stage
 $ ./hugo/04-publish-prod &amp;quot;update typo in recent post&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;So where did the &lt;code&gt;build-public&lt;/code&gt; script go? It&amp;rsquo;s purpose, described above, is in fact the first step towards publishing. You can test all of the site completely locally with &lt;code&gt;hugo server&lt;/code&gt; without having to build the &lt;code&gt;public&lt;/code&gt; directory. As such it made sense to include its commands in a more complete script: &lt;code&gt;03-publish-stage&lt;/code&gt;&lt;/p&gt;
+&lt;h5 id=&#34;what-s-in-the-scripts-now:b0d24be26c981e452cbdca0cff1978e4&#34;&gt;what&amp;rsquo;s in the scripts now?&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;$ tree hugo
+hugo
+├── 01-serve-withdrafts
+├── 02-serve
+├── 03-publish-stage
+└── 04-publish-prod
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;./hugo/03-publish-stage&lt;/code&gt;&lt;/strong&gt;&lt;br /&gt;
+So where did the &lt;code&gt;build-public&lt;/code&gt; script go? It&amp;rsquo;s purpose, described above, is in fact the first step towards publishing. You can test all of the site completely locally with &lt;code&gt;hugo server&lt;/code&gt; without having to build the &lt;code&gt;public&lt;/code&gt; directory. As such it made sense to include its commands in a more complete script: &lt;code&gt;03-publish-stage&lt;/code&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;#!/bin/bash
 
@@ -333,7 +344,6 @@ echo -e &amp;quot;copying hugo site public --&amp;gt; osgav-root-public\n&amp;qu
 rm -rf ../osgav-root-public/*
 cp -r public/* ../osgav-root-public/
 
-
 echo -e &amp;quot;\n--------------------------------------------------\n&amp;quot;
 echo -e &amp;quot;$ git status osgav-root-public\n&amp;quot;
 
@@ -342,6 +352,42 @@ git status
 
 echo -e &amp;quot;\n--------------------------------------------------\n&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;./hugo/04-publish-prod &amp;quot;commit message!&amp;quot;&lt;/code&gt;&lt;/strong&gt;&lt;br /&gt;
+The &lt;code&gt;04-publish-prod&lt;/code&gt; script is the only one that takes an argument - the commit message to be used for the &lt;code&gt;git commit&lt;/code&gt; command. It also shows you the same &lt;code&gt;git status&lt;/code&gt; output as &lt;code&gt;03-publish-stage&lt;/code&gt; so you have another chance to sanity check what you&amp;rsquo;re pushing before you publish.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/bin/bash
+
+function pause(){
+        read -sp &amp;quot;$*&amp;quot;
+}
+
+echo -e &amp;quot;\n---------------------------------------------\n&amp;quot;
+echo &amp;quot;$ git status osgav-root-public&amp;quot;
+echo -e &amp;quot;\n---------------------------------------------\n&amp;quot;
+
+cd ../osgav-root-public
+git status
+
+echo -e &amp;quot;\n---------------------------------------------\n&amp;quot;
+echo &amp;quot;Hit [Enter] to continue with:&amp;quot;
+echo &amp;quot;$ git add --all&amp;quot;
+echo &amp;quot;$ git commit -am \&amp;quot;$1\&amp;quot;&amp;quot;
+echo &amp;quot;$ git push origin master&amp;quot;
+echo &amp;quot;&amp;quot;
+pause &amp;quot;Are you sure?&amp;quot;
+echo -e &amp;quot;\n\n---------------------------------------------\n&amp;quot;
+
+git add --all
+git commit -am &amp;quot;$1&amp;quot;
+git push origin master
+
+echo -e &amp;quot;\n---------------------------------------------\n&amp;quot;
+echo &amp;quot;updated published! https://osgav.run&amp;quot;
+echo -e &amp;quot;\n---------------------------------------------\n&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As you can see I&amp;rsquo;ve also numbered the scripts so it is obvious which order they should be getting used in. I still have some steps to add here - don&amp;rsquo;t want &lt;code&gt;osgav-source&lt;/code&gt; to get out of sync. Currently I&amp;rsquo;ve been catching it up manually meaning more than 1 commit to the site could be reverted if I checkout the previous version of the source. Not so great!&lt;/p&gt;
 
 &lt;hr /&gt;
 

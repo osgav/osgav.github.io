@@ -289,7 +289,18 @@ $ ./hugo/03-publish-stage
 $ ./hugo/04-publish-prod &quot;update typo in recent post&quot;
 </code></pre>
 
-<p>So where did the <code>build-public</code> script go? It&rsquo;s purpose, described above, is in fact the first step towards publishing. You can test all of the site completely locally with <code>hugo server</code> without having to build the <code>public</code> directory. As such it made sense to include its commands in a more complete script: <code>03-publish-stage</code></p>
+<h5 id="what-s-in-the-scripts-now:b0d24be26c981e452cbdca0cff1978e4">what&rsquo;s in the scripts now?</h5>
+
+<pre><code>$ tree hugo
+hugo
+├── 01-serve-withdrafts
+├── 02-serve
+├── 03-publish-stage
+└── 04-publish-prod
+</code></pre>
+
+<p><strong><code>./hugo/03-publish-stage</code></strong><br />
+So where did the <code>build-public</code> script go? It&rsquo;s purpose, described above, is in fact the first step towards publishing. You can test all of the site completely locally with <code>hugo server</code> without having to build the <code>public</code> directory. As such it made sense to include its commands in a more complete script: <code>03-publish-stage</code></p>
 
 <pre><code>#!/bin/bash
 
@@ -310,7 +321,6 @@ echo -e &quot;copying hugo site public --&gt; osgav-root-public\n&quot;
 rm -rf ../osgav-root-public/*
 cp -r public/* ../osgav-root-public/
 
-
 echo -e &quot;\n--------------------------------------------------\n&quot;
 echo -e &quot;$ git status osgav-root-public\n&quot;
 
@@ -319,6 +329,42 @@ git status
 
 echo -e &quot;\n--------------------------------------------------\n&quot;
 </code></pre>
+
+<p><strong><code>./hugo/04-publish-prod &quot;commit message!&quot;</code></strong><br />
+The <code>04-publish-prod</code> script is the only one that takes an argument - the commit message to be used for the <code>git commit</code> command. It also shows you the same <code>git status</code> output as <code>03-publish-stage</code> so you have another chance to sanity check what you&rsquo;re pushing before you publish.</p>
+
+<pre><code>#!/bin/bash
+
+function pause(){
+        read -sp &quot;$*&quot;
+}
+
+echo -e &quot;\n---------------------------------------------\n&quot;
+echo &quot;$ git status osgav-root-public&quot;
+echo -e &quot;\n---------------------------------------------\n&quot;
+
+cd ../osgav-root-public
+git status
+
+echo -e &quot;\n---------------------------------------------\n&quot;
+echo &quot;Hit [Enter] to continue with:&quot;
+echo &quot;$ git add --all&quot;
+echo &quot;$ git commit -am \&quot;$1\&quot;&quot;
+echo &quot;$ git push origin master&quot;
+echo &quot;&quot;
+pause &quot;Are you sure?&quot;
+echo -e &quot;\n\n---------------------------------------------\n&quot;
+
+git add --all
+git commit -am &quot;$1&quot;
+git push origin master
+
+echo -e &quot;\n---------------------------------------------\n&quot;
+echo &quot;updated published! https://osgav.run&quot;
+echo -e &quot;\n---------------------------------------------\n&quot;
+</code></pre>
+
+<p>As you can see I&rsquo;ve also numbered the scripts so it is obvious which order they should be getting used in. I still have some steps to add here - don&rsquo;t want <code>osgav-source</code> to get out of sync. Currently I&rsquo;ve been catching it up manually meaning more than 1 commit to the site could be reverted if I checkout the previous version of the source. Not so great!</p>
 
 <hr />
 
