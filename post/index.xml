@@ -97,7 +97,17 @@
       <pubDate>Sun, 05 Jun 2016 13:41:15 +0000</pubDate>
       
       <guid>https://osgav.run/post/whois-osgav/</guid>
-      <description>&lt;p&gt;As a Global Availability &amp;amp; Performance Engineer, or more generally a Systems Engineer, I find myself using a multitude of web portals, tools and API integrations to monitor, analyze and optimize the health of a high traffic global travel search engine.&lt;/p&gt;
+      <description>
+
+&lt;h3 id=&#34;osgav-run:25b20b776764850faa234627b6c4f990&#34;&gt;osgav.run&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;https://osgav.run/&lt;/code&gt; is my personal blog - a place for me to ramble, and write about projects I&amp;rsquo;m working on. Historically I&amp;rsquo;ve not been an avid blogger, but this changes now! Starting with a shiny new lightweight blogging framework and polished &lt;a href=&#34;https://osgav.run/page/projects/hugo-build-and-publish-workflow&#34;&gt;writing and publishing workflow&amp;hellip;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;So who am I? And what do I do?&lt;/p&gt;
+
+&lt;h3 id=&#34;gavin-mcgough:25b20b776764850faa234627b6c4f990&#34;&gt;gavin mcgough&lt;/h3&gt;
+
+&lt;p&gt;As a Global Availability &amp;amp; Performance Engineer, or more generally a Systems Engineer, I find myself using a multitude of web portals, tools and API integrations to monitor, analyze and optimize the health of a high traffic global travel search engine: Skyscanner&lt;/p&gt;
 
 &lt;p&gt;This engine is comprised of various website, API and backend systems. There are different systems for monitoring the operation (CDN &amp;amp; GLB), availability, performance (RUM &amp;amp; APM), OS metrics and business KPIs across all of these. My team are the administrators for the availability and performance systems, and we work on creating Global Health views across all of these systems - also integrating with alerting solutions - to give the developers building and running them a better idea of how their products are performing.&lt;/p&gt;
 
