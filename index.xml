@@ -79,7 +79,9 @@ $ ./hugo/04-publish-prod &amp;quot;posting next new post!&amp;quot;
 &lt;p&gt;unpublish content &amp;ndash;&amp;gt;&lt;br /&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;pre&gt;&lt;code&gt;$ ...
+&lt;pre&gt;&lt;code&gt;&amp;gt; same as publishing content
+&amp;gt; but set draft = true in post/page front matter
+&amp;gt; then publish again
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;blockquote&gt;
