@@ -71,7 +71,7 @@
 &lt;p&gt;I haven&amp;rsquo;t dug particularly deep into this but it may be possible for CloudFlare to serve out a HTTPS custom domain from the edge and communicate with a HTTPS GitHub Pages origin (where you haven&amp;rsquo;t configured a custom domain so are still on HTTPS *.github.io) - so for those who want a particularly secure static blog that may be the thing to do&amp;hellip;&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;Also while reading into all of this, I stumbled across a colleague&amp;rsquo;s personal blog that amusingly has the same theme (the original) for another blogging platform - Ghost. And is hostly in an entirely different way, but produces a very similar output :) &lt;a href=&#34;https://iainjp.com/&#34;&gt;https://iainjp.com/&lt;/a&gt; - &lt;a href=&#34;https://iainjp.com/from-jekyll-to-ghost/&#34;&gt;From Jekyll to Ghost&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Also while reading into all of this, I stumbled across a colleague&amp;rsquo;s personal blog that amusingly has the same theme (the original) for another blogging platform - Ghost. And is hosted in an entirely different way, but produces a very similar output :) &lt;a href=&#34;https://iainjp.com/&#34;&gt;https://iainjp.com/&lt;/a&gt; - &lt;a href=&#34;https://iainjp.com/from-jekyll-to-ghost/&#34;&gt;From Jekyll to Ghost&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 </description>
     </item>
