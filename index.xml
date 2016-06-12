@@ -46,8 +46,8 @@
 
 &lt;p&gt;I still have plenty to learn about Hugo so I will no doubt revisit these in future, but I&amp;rsquo;ve written a bit about the build process (yet to automate publishing) and the cheatsheet I&amp;rsquo;ve started here:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://osgav.run/page/hugo-build-and-publish-workflow&#34;&gt;Hugo Build and Publish Workflow&lt;/a&gt; (in progress)&lt;br /&gt;
-&lt;a href=&#34;https://osgav.run/page/hugo-markdown-cheatsheet&#34;&gt;Hugo Markdown Cheatsheet&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://osgav.run/page/projects/hugo-build-and-publish-workflow&#34;&gt;Hugo Build and Publish Workflow&lt;/a&gt; (in progress)&lt;br /&gt;
+&lt;a href=&#34;https://osgav.run/page/projects/hugo-markdown-cheatsheet&#34;&gt;Hugo Markdown Cheatsheet&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;GitHub has a lot of relevant help pages for setting up a GitHub Pages site and configuring a custom domain. I read through many of them, which I&amp;rsquo;ve listed below - if you&amp;rsquo;re thinking about setting up GitHub Pages with a custom domain and powering it with Hugo, hopefully some of the hints I&amp;rsquo;ve mentioned will be useful alongside the GitHub documentation and other material you read&amp;hellip;&lt;/p&gt;
 
