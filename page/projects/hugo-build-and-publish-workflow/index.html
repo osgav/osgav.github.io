@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  	<meta property="og:title" content=" Hugo Build and Publish Workflow &middot;  osgav" />
+  	<meta property="og:site_name" content="osgav" />
+  	<meta property="og:url" content="https://osgav.run/page/projects/hugo-build-and-publish-workflow/" />
+
+    
+  	<meta property="og:type" content="article" />
+
+    <meta property="og:article:published_time" content="2016-06-11T20:10:08Z" />
+
+    
+    
+
+  <title>
+     Hugo Build and Publish Workflow &middot;  osgav
+  </title>
+
+    <meta name="description" content="systems engineer, linux &amp; python enthusiast, occasional blogger..." />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="https://osgav.run/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="https://osgav.run/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="https://osgav.run/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://osgav.run/css/nav.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400|Inconsolata" />
+
+
+    
+      
+          <link href="https://osgav.run/index.xml" rel="alternate" type="application/rss+xml" title="osgav" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.15" />
+
+    <link rel="canonical" href="https://osgav.run/page/projects/hugo-build-and-publish-workflow/" />
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+            <h4>$ osgav</h4>
+            <li class="nav-opened" role="presentation">
+            	<a href="https://osgav.run/">$ curl https://blog</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://osgav.run/post/whois-osgav/">$ whois osgav</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://osgav.run/page/projects/">$ cd projects</a>
+            </li>
+        
+            <h4>Find me again</h4>
+            <li class="nav-opened" role="presentation">
+            	<a href="https://github.com/osgav">github</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://twitter.com/ZER0D0TS">twitter</a>
+            </li>
+        
+    </ul>
+    
+    
+    <a class="subscribe-button icon-feed" href="https://osgav.run/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav overlay clearfix">
+
+
+      
+        <a class="blog-logo" href="https://osgav.run/"><img src="https://osgav.run/images/tux.jpg" alt="Home" /></a>
+      
+      
+          <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+      
+    </nav>
+
+    
+
+
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post page">
+    <header class="post-header">
+      <nav class="breadcrumb">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </nav>
+
+
+        <h1 class="post-title">Hugo Build and Publish Workflow</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+
+
+
+
+<p><a href="https://osgav.run/page/projects">&lt; back to projects</a></p>
+
+<hr />
+
+<h3 id="building:b0d24be26c981e452cbdca0cff1978e4">building</h3>
+
+<p>To make building and previewing changes locally easier, I wrote a couple of short scripts. For context, I run the <code>hugo</code> commands inside a vagrant virtual machine (linux) and access the site using a web browser on the host machine (windows).</p>
+
+<p>In the source for my hugo site, I have a <code>hugo</code> folder for these scripts. This makes running them similar to invoking the <code>hugo</code> command itself:</p>
+
+<pre><code>$ ls -1 osgav
+archetypes
+config.toml
+content
+data
+hugo
+layouts
+public
+static
+themes
+
+$ tree osgav/hugo/
+osgav/hugo/
+├── build-public
+├── serve
+└── serve-withdrafts
+
+$ ./hugo/serve
+$ ./hugo/build-public
+</code></pre>
+
+<p>As mentioned in <a href="https://osgav.run/page/hugo-markdown-cheatsheet">Hugo Markdown Cheatsheet</a>, if you run <code>hugo server</code> with the parameter <code>--buildDrafts</code> then any posts or pages where <code>draft = true</code> will also be published to the blog on the local hugo server.</p>
+
+<p>The <code>--buildDrafts</code> parameter is the only difference between the <code>serve</code> and <code>serve-withdrafts</code> scripts.</p>
+
+<p>Both the <code>serve</code> and <code>build-public</code> scripts ignore drafts, so I can use <code>serve</code> first to preview what will be generated after I run <code>build-public</code>.</p>
+
+<p>Until I take a look at live reloading, this let&rsquo;s me do the following to make changes and preview them - my <strong><em>build workflow:</em></strong></p>
+
+<pre><code>$ vi content/page/hugo-build-and-publish-workflow.md
+&lt;make edits&gt;
+$ ./hugo/serve-withdrafts
+...
+Press Ctrl+C to stop
+&lt;preview changes&gt;
+&lt;ctrl+c to stop hugo server&gt;
+
+repeat
+</code></pre>
+
+<p>With live reload I shouldn&rsquo;t need to stop the server to make changes - simply saving changes <s>and refreshing the page in the browser</s> will be enough.</p>
+
+<p>I use a mixture of <code>vi</code> and <a href="https://www.sublimetext.com/">Sublime</a> - <s>I suspect I may use Sublime more once I configure live reload&hellip;</s> <em>Wrong! LiveReload is already enabled by default, but <code>hugo server</code> only seems to be able to detect changes to files made from inside my virtual machine - using Sublime on the host isn&rsquo;t detected, so the page is not reloaded&hellip;</em></p>
+
+<h5 id="what-s-in-the-scripts:b0d24be26c981e452cbdca0cff1978e4">what&rsquo;s in the scripts?</h5>
+
+<p><strong><code>./hugo/serve</code></strong><br />
+The <code>serve</code> scripts also use the <code>hugo server</code> parameters <code>--port</code> <code>--bind</code> &amp; <code>--baseURL</code> which let me correctly serve the site from my vagrant virtual machine and make it accessible to the host (<code>1313</code> is actually the default port, <code>192.168.56.2</code> is required or else its only accessible inside the virtual machine - this is the virtual machine&rsquo;s IP on a Host-only Network that the host is also connected to. <code>http://192.168.56.2:1313/</code> overrides the value specified in <code>config.toml</code> that contains the site&rsquo;s public domain).</p>
+
+<pre><code>#!/bin/bash
+hugo server --theme=casper \
+--port=1313 \
+--bind=192.168.56.2 \
+--baseURL=&quot;http://192.168.56.2:1313/&quot;
+</code></pre>
+
+<p><strong><code>./hugo/serve-withdrafts</code></strong><br />
+The only difference is <code>--buildDrafts \</code></p>
+
+<pre><code>...
+hugo server --theme=casper \
+--buildDrafts \
+--port=1313 \
+...
+</code></pre>
+
+<p><strong><code>./hugo/build-public</code></strong><br />
+The <code>build-public</code> script also adds a <code>CNAME</code> file to the root of the output directory <code>public</code>. This file contains <code>osgav.run</code> which enables GitHub Pages to serve from a custom domain once its being served from the correct place in GitHub.</p>
+
+<pre><code>#!/bin/bash
+hugo --theme=casper
+
+# add CNAME file to public
+touch public/CNAME
+echo &quot;osgav.run&quot; &gt; public/CNAME
+</code></pre>
+
+<hr />
+
+<h3 id="publishing:b0d24be26c981e452cbdca0cff1978e4">publishing</h3>
+
+<p>I haven&rsquo;t scripted the publishing steps yet - need to rename some things for better structuring - <em>like cleanly deploying another hugo site in another repo&rsquo;s <code>gh-pages</code> branch or simply not messing up this site&hellip;</em></p>
+
+<hr />
+
+<p><a href="https://osgav.run/page/projects">&lt; back to projects</a></p>
+
+
+
+
+
+
+
+
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+    <figure class="author-image">
+        <a class="img" href="https://osgav.run/" style="background-image: url(https://osgav.run/images/tux.jpg)"><span class="hidden">osgav's Picture</span></a>
+    </figure>
+    
+
+    
+
+
+
+
+
+<section class="author">
+  <h4><a href="https://osgav.run/">osgav</a></h4>
+  
+  <p>Global Availability and Performance Engineer</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">the internet</span>
+    <span class="author-link icon-link"><a href="https://osgav.run/">https://osgav.run/</a></span>
+  </div>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this page</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=Hugo%20Build%20and%20Publish%20Workflow&amp;url=https%3a%2f%2fosgav.run%2fpage%2fprojects%2fhugo-build-and-publish-workflow%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fosgav.run%2fpage%2fprojects%2fhugo-build-and-publish-workflow%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fosgav.run%2fpage%2fprojects%2fhugo-build-and-publish-workflow%2f&amp;description=Hugo%20Build%20and%20Publish%20Workflow"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fosgav.run%2fpage%2fprojects%2fhugo-build-and-publish-workflow%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+
+
+
+  </footer>
+</article>
+
+</main>
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">osgav</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="https://osgav.run/js/jquery.js"></script>
+    <script type="text/javascript" src="https://osgav.run/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://osgav.run/js/index.js"></script>
+    
+</body>
+</html>
+

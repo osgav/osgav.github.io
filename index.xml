@@ -6,16 +6,194 @@
     <description>Recent content on osgav</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 11 Jun 2016 16:40:05 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 12 Jun 2016 11:33:49 +0000</lastBuildDate>
     <atom:link href="https://osgav.run/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>hugo --&gt; https://osgav.run</title>
+      <link>https://osgav.run/post/hugo-to-https/</link>
+      <pubDate>Sun, 12 Jun 2016 11:33:49 +0000</pubDate>
+      
+      <guid>https://osgav.run/post/hugo-to-https/</guid>
+      <description>&lt;p&gt;I stumbled across the Hugo static site generator recently and after reading a little and watching a &lt;a href=&#34;https://gohugo.io/overview/quickstart/&#34;&gt;short video&lt;/a&gt; (01:08) I thought it looked pretty interesting and worth trying out. It&amp;rsquo;s a fairly light blogging platform which can be used with GitHub Pages, which can then be topped with another service to provide SSL via a Let&amp;rsquo;s Encrypt certificate.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m still not 100% sure about the service hooking me up with the Let&amp;rsquo;s Encrypt SSL at the moment - we&amp;rsquo;ll see how it goes. Otherwise it looks like Hugo &amp;amp; GitHub Pages will provide a smooth experience for maintaining a blog of posts and pages.&lt;/p&gt;
+
+&lt;p&gt;The main steps I went through after clicking some link about &lt;em&gt;hugo&lt;/em&gt;&amp;hellip;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;discovered &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;tested blog locally with &lt;code&gt;hugo server&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;found really awesome responsive &lt;a href=&#34;https://github.com/vjeantet/hugo-theme-casper&#34;&gt;theme&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;wrote initial content&lt;/li&gt;
+&lt;li&gt;uploaded to GitHub Pages &lt;strong&gt;&lt;code&gt;https://osgav.github.io&lt;/code&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;purchased domain &lt;strong&gt;&lt;code&gt;osgav.run&lt;/code&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;configured &lt;a href=&#34;https://github.com/osgav/osgav.github.io&#34;&gt;osgav.github.io&lt;/a&gt; repo with &lt;a href=&#34;https://github.com/osgav/osgav.github.io/blob/master/CNAME&#34;&gt;CNAME&lt;/a&gt; file&lt;/li&gt;
+&lt;li&gt;registered for Kloudsec CDN service to provide Let&amp;rsquo;s Encrypt SSL&lt;/li&gt;
+&lt;li&gt;configured Kloudsec website to point at GitHub Pages site&lt;/li&gt;
+&lt;li&gt;configured &lt;code&gt;NS&lt;/code&gt; records with domain provider (provider&amp;rsquo;s nameservers)&lt;/li&gt;
+&lt;li&gt;configured &lt;code&gt;A&lt;/code&gt; records with domain provider (Kloudsec&amp;rsquo;s IPs)&lt;/li&gt;
+&lt;li&gt;updated Hugo site configuration to use &lt;strong&gt;&lt;code&gt;https://osgav.run&lt;/code&gt;&lt;/strong&gt; domain name&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I didn&amp;rsquo;t necessarily perform these in that exact order towards the end (and I&amp;rsquo;m not entirely certain that would be an optimum order) so consequently I did have a little bit of downtime between switching my site from osgav.github.io to osgav.run but I believe it was due to the new DNS not being fully live yet - so not the kind of downtime Kloudsec&amp;rsquo;s documentation advises they mitigate against.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;wrote initial content&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&amp;hellip;actually consisted of thoroughly digging through the project files and getting a grasp of its structure, setting up the menu and theming and looking at changes I&amp;rsquo;d like to make that aren&amp;rsquo;t so simple. While doing this I also started writing a few short scripts and created a cheatsheet to help make writing and publishing blog posts easier.&lt;/p&gt;
+
+&lt;p&gt;I still have plenty to learn about Hugo so I will no doubt revisit these in future, but I&amp;rsquo;ve written a bit about the build process (yet to automate publishing) and the cheatsheet I&amp;rsquo;ve started here:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://osgav.run/page/hugo-build-and-publish-workflow&#34;&gt;Hugo Build and Publish Workflow&lt;/a&gt; (in progress)&lt;br /&gt;
+&lt;a href=&#34;https://osgav.run/page/hugo-markdown-cheatsheet&#34;&gt;Hugo Markdown Cheatsheet&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;GitHub has a lot of relevant help pages for setting up a GitHub Pages site and configuring a custom domain. I read through many of them, which I&amp;rsquo;ve listed below - if you&amp;rsquo;re thinking about setting up GitHub Pages with a custom domain and powering it with Hugo, hopefully some of the hints I&amp;rsquo;ve mentioned will be useful alongside the GitHub documentation and other material you read&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://help.github.com/articles/quick-start-setting-up-a-custom-domain/&#34;&gt;https://help.github.com/articles/quick-start-setting-up-a-custom-domain/&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://help.github.com/articles/setting-up-your-pages-site-repository/&#34;&gt;https://help.github.com/articles/setting-up-your-pages-site-repository/&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://help.github.com/articles/setting-up-an-apex-domain-and-www-subdomain/&#34;&gt;https://help.github.com/articles/setting-up-an-apex-domain-and-www-subdomain/&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://help.github.com/articles/about-supported-custom-domains/#apex-domains&#34;&gt;https://help.github.com/articles/about-supported-custom-domains/#apex-domains&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://help.github.com/articles/using-a-custom-domain-with-github-pages/&#34;&gt;https://help.github.com/articles/using-a-custom-domain-with-github-pages/&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://help.github.com/articles/about-supported-custom-domains/&#34;&gt;https://help.github.com/articles/about-supported-custom-domains/&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://help.github.com/articles/setting-up-an-apex-domain/&#34;&gt;https://help.github.com/articles/setting-up-an-apex-domain/&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://help.github.com/articles/user-organization-and-project-pages/&#34;&gt;https://help.github.com/articles/user-organization-and-project-pages/&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://help.github.com/articles/creating-project-pages-manually/&#34;&gt;https://help.github.com/articles/creating-project-pages-manually/&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://help.github.com/articles/securing-your-github-pages-site-with-https/&#34;&gt;https://help.github.com/articles/securing-your-github-pages-site-with-https/&lt;/a&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;The extra layer - Kloudsec - providing the Let&amp;rsquo;s Encrypt SSL is necessary because GitHub Pages do not currently support SSL on custom domains.&lt;/p&gt;
+
+&lt;p&gt;You can have SSL on a *.github.io domain or plain HTTP on a custom domain.&lt;/p&gt;
+
+&lt;p&gt;While reading into this I gathered CloudFlare is a popular solution but people do have some concerns over certain configuration options - by using Kloudsec I am by no means using the most optimally configurable and secure solution but it is &lt;em&gt;very easy&lt;/em&gt; to get SSL enabled for the visitor &amp;ndash;&amp;gt; Kloudsec edge portion of the journey.&lt;/p&gt;
+
+&lt;p&gt;I haven&amp;rsquo;t dug particularly deep into this but it may be possible for CloudFlare to serve out a HTTPS custom domain from the edge and communicate with a HTTPS GitHub Pages origin (where you haven&amp;rsquo;t configured a custom domain so are still on HTTPS *.github.io) - so for those who want a particularly secure static blog that may be the thing to do&amp;hellip;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Also while reading into all of this, I stumbled across a colleague&amp;rsquo;s personal blog that amusingly has the same theme (the original) for another blogging platform - Ghost. And is hostly in an entirely different way, but produces a very similar output :) &lt;a href=&#34;https://iainjp.com/&#34;&gt;https://iainjp.com/&lt;/a&gt; - &lt;a href=&#34;https://iainjp.com/from-jekyll-to-ghost/&#34;&gt;From Jekyll to Ghost&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Hugo Build and Publish Workflow</title>
+      <link>https://osgav.run/page/projects/hugo-build-and-publish-workflow/</link>
+      <pubDate>Sat, 11 Jun 2016 20:10:08 +0000</pubDate>
+      
+      <guid>https://osgav.run/page/projects/hugo-build-and-publish-workflow/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;https://osgav.run/page/projects&#34;&gt;&amp;lt; back to projects&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;building:b0d24be26c981e452cbdca0cff1978e4&#34;&gt;building&lt;/h3&gt;
+
+&lt;p&gt;To make building and previewing changes locally easier, I wrote a couple of short scripts. For context, I run the &lt;code&gt;hugo&lt;/code&gt; commands inside a vagrant virtual machine (linux) and access the site using a web browser on the host machine (windows).&lt;/p&gt;
+
+&lt;p&gt;In the source for my hugo site, I have a &lt;code&gt;hugo&lt;/code&gt; folder for these scripts. This makes running them similar to invoking the &lt;code&gt;hugo&lt;/code&gt; command itself:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ls -1 osgav
+archetypes
+config.toml
+content
+data
+hugo
+layouts
+public
+static
+themes
+
+$ tree osgav/hugo/
+osgav/hugo/
+├── build-public
+├── serve
+└── serve-withdrafts
+
+$ ./hugo/serve
+$ ./hugo/build-public
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As mentioned in &lt;a href=&#34;https://osgav.run/page/hugo-markdown-cheatsheet&#34;&gt;Hugo Markdown Cheatsheet&lt;/a&gt;, if you run &lt;code&gt;hugo server&lt;/code&gt; with the parameter &lt;code&gt;--buildDrafts&lt;/code&gt; then any posts or pages where &lt;code&gt;draft = true&lt;/code&gt; will also be published to the blog on the local hugo server.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;--buildDrafts&lt;/code&gt; parameter is the only difference between the &lt;code&gt;serve&lt;/code&gt; and &lt;code&gt;serve-withdrafts&lt;/code&gt; scripts.&lt;/p&gt;
+
+&lt;p&gt;Both the &lt;code&gt;serve&lt;/code&gt; and &lt;code&gt;build-public&lt;/code&gt; scripts ignore drafts, so I can use &lt;code&gt;serve&lt;/code&gt; first to preview what will be generated after I run &lt;code&gt;build-public&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Until I take a look at live reloading, this let&amp;rsquo;s me do the following to make changes and preview them - my &lt;strong&gt;&lt;em&gt;build workflow:&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ vi content/page/hugo-build-and-publish-workflow.md
+&amp;lt;make edits&amp;gt;
+$ ./hugo/serve-withdrafts
+...
+Press Ctrl+C to stop
+&amp;lt;preview changes&amp;gt;
+&amp;lt;ctrl+c to stop hugo server&amp;gt;
+
+repeat
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;With live reload I shouldn&amp;rsquo;t need to stop the server to make changes - simply saving changes &lt;s&gt;and refreshing the page in the browser&lt;/s&gt; will be enough.&lt;/p&gt;
+
+&lt;p&gt;I use a mixture of &lt;code&gt;vi&lt;/code&gt; and &lt;a href=&#34;https://www.sublimetext.com/&#34;&gt;Sublime&lt;/a&gt; - &lt;s&gt;I suspect I may use Sublime more once I configure live reload&amp;hellip;&lt;/s&gt; &lt;em&gt;Wrong! LiveReload is already enabled by default, but &lt;code&gt;hugo server&lt;/code&gt; only seems to be able to detect changes to files made from inside my virtual machine - using Sublime on the host isn&amp;rsquo;t detected, so the page is not reloaded&amp;hellip;&lt;/em&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;what-s-in-the-scripts:b0d24be26c981e452cbdca0cff1978e4&#34;&gt;what&amp;rsquo;s in the scripts?&lt;/h5&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;./hugo/serve&lt;/code&gt;&lt;/strong&gt;&lt;br /&gt;
+The &lt;code&gt;serve&lt;/code&gt; scripts also use the &lt;code&gt;hugo server&lt;/code&gt; parameters &lt;code&gt;--port&lt;/code&gt; &lt;code&gt;--bind&lt;/code&gt; &amp;amp; &lt;code&gt;--baseURL&lt;/code&gt; which let me correctly serve the site from my vagrant virtual machine and make it accessible to the host (&lt;code&gt;1313&lt;/code&gt; is actually the default port, &lt;code&gt;192.168.56.2&lt;/code&gt; is required or else its only accessible inside the virtual machine - this is the virtual machine&amp;rsquo;s IP on a Host-only Network that the host is also connected to. &lt;code&gt;http://192.168.56.2:1313/&lt;/code&gt; overrides the value specified in &lt;code&gt;config.toml&lt;/code&gt; that contains the site&amp;rsquo;s public domain).&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/bin/bash
+hugo server --theme=casper \
+--port=1313 \
+--bind=192.168.56.2 \
+--baseURL=&amp;quot;http://192.168.56.2:1313/&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;./hugo/serve-withdrafts&lt;/code&gt;&lt;/strong&gt;&lt;br /&gt;
+The only difference is &lt;code&gt;--buildDrafts \&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;...
+hugo server --theme=casper \
+--buildDrafts \
+--port=1313 \
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;./hugo/build-public&lt;/code&gt;&lt;/strong&gt;&lt;br /&gt;
+The &lt;code&gt;build-public&lt;/code&gt; script also adds a &lt;code&gt;CNAME&lt;/code&gt; file to the root of the output directory &lt;code&gt;public&lt;/code&gt;. This file contains &lt;code&gt;osgav.run&lt;/code&gt; which enables GitHub Pages to serve from a custom domain once its being served from the correct place in GitHub.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/bin/bash
+hugo --theme=casper
+
+# add CNAME file to public
+touch public/CNAME
+echo &amp;quot;osgav.run&amp;quot; &amp;gt; public/CNAME
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;publishing:b0d24be26c981e452cbdca0cff1978e4&#34;&gt;publishing&lt;/h3&gt;
+
+&lt;p&gt;I haven&amp;rsquo;t scripted the publishing steps yet - need to rename some things for better structuring - &lt;em&gt;like cleanly deploying another hugo site in another repo&amp;rsquo;s &lt;code&gt;gh-pages&lt;/code&gt; branch or simply not messing up this site&amp;hellip;&lt;/em&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://osgav.run/page/projects&#34;&gt;&amp;lt; back to projects&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Hugo Markdown Cheatsheet</title>
-      <link>https://osgav.run/page/hugo-markdown-cheatsheet/</link>
+      <link>https://osgav.run/page/projects/hugo-markdown-cheatsheet/</link>
       <pubDate>Sat, 11 Jun 2016 16:40:05 +0000</pubDate>
       
-      <guid>https://osgav.run/page/hugo-markdown-cheatsheet/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;TL;DR&lt;/strong&gt; there is a cheatsheet for Hugo Markdown available in my github (actually not yet, but will be soon), transcribed from &lt;a href=&#34;https://sourceforge.net/p/hugo-generator/wiki/markdown_syntax/&#34;&gt;https://sourceforge.net/p/hugo-generator/wiki/markdown_syntax/&lt;/a&gt;&lt;/p&gt;
+      <guid>https://osgav.run/page/projects/hugo-markdown-cheatsheet/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://osgav.run/page/projects&#34;&gt;&amp;lt; back to projects&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;TL;DR&lt;/strong&gt; there is a cheatsheet for Hugo Markdown available in my github (actually not yet, but will be soon), transcribed from &lt;a href=&#34;https://sourceforge.net/p/hugo-generator/wiki/markdown_syntax/&#34;&gt;https://sourceforge.net/p/hugo-generator/wiki/markdown_syntax/&lt;/a&gt; (not all of it - and a couple of bits from gohugo docs)&lt;/p&gt;
 
 &lt;p&gt;You can make this particularly handy by doing something like this:&lt;/p&gt;
 
@@ -46,6 +224,10 @@ title = &amp;quot;cheatsheet&amp;quot;
 
 &lt;p&gt;&lt;img src=&#34;https://osgav.run/images/hugo_cheatsheet_draft.png&#34; alt=&#34;hugo cheatsheet draft&#34; /&gt;
 &lt;img src=&#34;https://osgav.run/images/hugo_cheatsheet.png&#34; alt=&#34;hugo cheatsheet&#34; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://osgav.run/page/projects&#34;&gt;&amp;lt; back to projects&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -95,7 +277,8 @@ title = &amp;quot;cheatsheet&amp;quot;
 
 &lt;h5 id=&#34;this-blog:3c42bb4157bf51d85ae7ffc4e1685909&#34;&gt;this blog&lt;/h5&gt;
 
-&lt;p&gt;&lt;strong&gt;11/06/2016:&lt;/strong&gt; &lt;a href=&#34;https://osgav.run/page/hugo-markdown-cheatsheet&#34;&gt;Hugo Markdown Cheatsheet&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;11/06/2016:&lt;/strong&gt; &lt;a href=&#34;https://osgav.run/page/projects/hugo-build-and-publish-workflow&#34;&gt;Hugo Build and Publish Workflow&lt;/a&gt; (in progress)&lt;br /&gt;
+&lt;strong&gt;11/06/2016:&lt;/strong&gt; &lt;a href=&#34;https://osgav.run/page/projects/hugo-markdown-cheatsheet&#34;&gt;Hugo Markdown Cheatsheet&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  	<meta property="og:title" content=" hugo --&gt; https://osgav.run &middot;  osgav" />
+  	<meta property="og:site_name" content="osgav" />
+  	<meta property="og:url" content="https://osgav.run/post/hugo-to-https/" />
+
+    
+  	<meta property="og:type" content="article" />
+
+    <meta property="og:article:published_time" content="2016-06-12T11:33:49Z" />
+
+    
+    <meta property="og:article:tag" content="hugo" />
+    
+    
+
+  <title>
+     hugo --&gt; https://osgav.run &middot;  osgav
+  </title>
+
+    <meta name="description" content="systems engineer, linux &amp; python enthusiast, occasional blogger..." />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="https://osgav.run/images/favicon.ico">
+	  <link rel="apple-touch-icon" href="https://osgav.run/images/apple-touch-icon.png" />
+
+    <link rel="stylesheet" type="text/css" href="https://osgav.run/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="https://osgav.run/css/nav.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400|Inconsolata" />
+
+
+    
+      
+          <link href="https://osgav.run/index.xml" rel="alternate" type="application/rss+xml" title="osgav" />
+      
+      
+    
+    <meta name="generator" content="Hugo 0.15" />
+
+    <link rel="canonical" href="https://osgav.run/post/hugo-to-https/" />
+
+    
+
+    
+</head>
+<body class="nav-closed">
+
+  <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        
+        
+        
+            <h4>$ osgav</h4>
+            <li class="nav-opened" role="presentation">
+            	<a href="https://osgav.run/">$ curl https://blog</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://osgav.run/post/whois-osgav/">$ whois osgav</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://osgav.run/page/projects/">$ cd projects</a>
+            </li>
+        
+            <h4>Find me again</h4>
+            <li class="nav-opened" role="presentation">
+            	<a href="https://github.com/osgav">github</a>
+            </li>
+        
+            
+            <li class="nav-opened" role="presentation">
+            	<a href="https://twitter.com/ZER0D0TS">twitter</a>
+            </li>
+        
+    </ul>
+    
+    
+    <a class="subscribe-button icon-feed" href="https://osgav.run/index.xml">Subscribe</a>
+    
+</div>
+<span class="nav-cover"></span>
+
+
+ <div class="site-wrapper">
+
+
+
+
+  
+  <header class="main-header post-head" style="background-image: url(https://osgav.run/images/hugo-logo.png)">
+  
+  <nav class="main-nav overlay clearfix">
+
+
+  
+      <a class="blog-logo" href="https://osgav.run/"><img src="https://osgav.run/images/tux.jpg" alt="Home" /></a>
+  
+  
+      <a class="menu-button" href="#"><span class="burger">&#9776;</span><span class="word">Menu</span></a>
+  
+  </nav>
+</header>
+
+
+
+<main class="content" role="main">
+
+
+
+
+  <article class="post post">
+
+    <header class="post-header">
+        <h1 class="post-title">hugo --&gt; https://osgav.run</h1>
+        <small></small>
+
+        <section class="post-meta">
+        
+          <time class="post-date" datetime="2016-06-12T11:33:49Z">
+            Jun 12, 2016
+          </time>
+        
+         
+          <span class="post-tag small"><a href="https://osgav.run/tags/hugo/">#hugo</a></span>
+         
+        </section>
+    </header>
+
+    <section class="post-content">
+      <p>I stumbled across the Hugo static site generator recently and after reading a little and watching a <a href="https://gohugo.io/overview/quickstart/">short video</a> (01:08) I thought it looked pretty interesting and worth trying out. It&rsquo;s a fairly light blogging platform which can be used with GitHub Pages, which can then be topped with another service to provide SSL via a Let&rsquo;s Encrypt certificate.</p>
+
+<p>I&rsquo;m still not 100% sure about the service hooking me up with the Let&rsquo;s Encrypt SSL at the moment - we&rsquo;ll see how it goes. Otherwise it looks like Hugo &amp; GitHub Pages will provide a smooth experience for maintaining a blog of posts and pages.</p>
+
+<p>The main steps I went through after clicking some link about <em>hugo</em>&hellip;</p>
+
+<ul>
+<li>discovered <a href="https://gohugo.io/">Hugo</a></li>
+<li>tested blog locally with <code>hugo server</code></li>
+<li>found really awesome responsive <a href="https://github.com/vjeantet/hugo-theme-casper">theme</a></li>
+<li>wrote initial content</li>
+<li>uploaded to GitHub Pages <strong><code>https://osgav.github.io</code></strong></li>
+<li>purchased domain <strong><code>osgav.run</code></strong></li>
+<li>configured <a href="https://github.com/osgav/osgav.github.io">osgav.github.io</a> repo with <a href="https://github.com/osgav/osgav.github.io/blob/master/CNAME">CNAME</a> file</li>
+<li>registered for Kloudsec CDN service to provide Let&rsquo;s Encrypt SSL</li>
+<li>configured Kloudsec website to point at GitHub Pages site</li>
+<li>configured <code>NS</code> records with domain provider (provider&rsquo;s nameservers)</li>
+<li>configured <code>A</code> records with domain provider (Kloudsec&rsquo;s IPs)</li>
+<li>updated Hugo site configuration to use <strong><code>https://osgav.run</code></strong> domain name</li>
+</ul>
+
+<p>I didn&rsquo;t necessarily perform these in that exact order towards the end (and I&rsquo;m not entirely certain that would be an optimum order) so consequently I did have a little bit of downtime between switching my site from osgav.github.io to osgav.run but I believe it was due to the new DNS not being fully live yet - so not the kind of downtime Kloudsec&rsquo;s documentation advises they mitigate against.</p>
+
+<blockquote>
+<p>wrote initial content</p>
+</blockquote>
+
+<p>&hellip;actually consisted of thoroughly digging through the project files and getting a grasp of its structure, setting up the menu and theming and looking at changes I&rsquo;d like to make that aren&rsquo;t so simple. While doing this I also started writing a few short scripts and created a cheatsheet to help make writing and publishing blog posts easier.</p>
+
+<p>I still have plenty to learn about Hugo so I will no doubt revisit these in future, but I&rsquo;ve written a bit about the build process (yet to automate publishing) and the cheatsheet I&rsquo;ve started here:</p>
+
+<p><a href="https://osgav.run/page/hugo-build-and-publish-workflow">Hugo Build and Publish Workflow</a> (in progress)<br />
+<a href="https://osgav.run/page/hugo-markdown-cheatsheet">Hugo Markdown Cheatsheet</a></p>
+
+<p>GitHub has a lot of relevant help pages for setting up a GitHub Pages site and configuring a custom domain. I read through many of them, which I&rsquo;ve listed below - if you&rsquo;re thinking about setting up GitHub Pages with a custom domain and powering it with Hugo, hopefully some of the hints I&rsquo;ve mentioned will be useful alongside the GitHub documentation and other material you read&hellip;</p>
+
+<p><a href="https://help.github.com/articles/quick-start-setting-up-a-custom-domain/">https://help.github.com/articles/quick-start-setting-up-a-custom-domain/</a><br />
+<a href="https://help.github.com/articles/setting-up-your-pages-site-repository/">https://help.github.com/articles/setting-up-your-pages-site-repository/</a><br />
+<a href="https://help.github.com/articles/setting-up-an-apex-domain-and-www-subdomain/">https://help.github.com/articles/setting-up-an-apex-domain-and-www-subdomain/</a><br />
+<a href="https://help.github.com/articles/about-supported-custom-domains/#apex-domains">https://help.github.com/articles/about-supported-custom-domains/#apex-domains</a><br />
+<a href="https://help.github.com/articles/using-a-custom-domain-with-github-pages/">https://help.github.com/articles/using-a-custom-domain-with-github-pages/</a><br />
+<a href="https://help.github.com/articles/about-supported-custom-domains/">https://help.github.com/articles/about-supported-custom-domains/</a><br />
+<a href="https://help.github.com/articles/setting-up-an-apex-domain/">https://help.github.com/articles/setting-up-an-apex-domain/</a><br />
+<a href="https://help.github.com/articles/user-organization-and-project-pages/">https://help.github.com/articles/user-organization-and-project-pages/</a><br />
+<a href="https://help.github.com/articles/creating-project-pages-manually/">https://help.github.com/articles/creating-project-pages-manually/</a><br />
+<a href="https://help.github.com/articles/securing-your-github-pages-site-with-https/">https://help.github.com/articles/securing-your-github-pages-site-with-https/</a><br /></p>
+
+<p>The extra layer - Kloudsec - providing the Let&rsquo;s Encrypt SSL is necessary because GitHub Pages do not currently support SSL on custom domains.</p>
+
+<p>You can have SSL on a *.github.io domain or plain HTTP on a custom domain.</p>
+
+<p>While reading into this I gathered CloudFlare is a popular solution but people do have some concerns over certain configuration options - by using Kloudsec I am by no means using the most optimally configurable and secure solution but it is <em>very easy</em> to get SSL enabled for the visitor &ndash;&gt; Kloudsec edge portion of the journey.</p>
+
+<p>I haven&rsquo;t dug particularly deep into this but it may be possible for CloudFlare to serve out a HTTPS custom domain from the edge and communicate with a HTTPS GitHub Pages origin (where you haven&rsquo;t configured a custom domain so are still on HTTPS *.github.io) - so for those who want a particularly secure static blog that may be the thing to do&hellip;</p>
+
+<blockquote>
+<p>Also while reading into all of this, I stumbled across a colleague&rsquo;s personal blog that amusingly has the same theme (the original) for another blogging platform - Ghost. And is hostly in an entirely different way, but produces a very similar output :) <a href="https://iainjp.com/">https://iainjp.com/</a> - <a href="https://iainjp.com/from-jekyll-to-ghost/">From Jekyll to Ghost</a></p>
+</blockquote>
+
+    </section>
+
+
+  <footer class="post-footer">
+
+
+    
+    <figure class="author-image">
+        <a class="img" href="https://osgav.run/" style="background-image: url(https://osgav.run/images/tux.jpg)"><span class="hidden">osgav's Picture</span></a>
+    </figure>
+    
+
+    
+
+
+
+
+
+<section class="author">
+  <h4><a href="https://osgav.run/">osgav</a></h4>
+  
+  <p>Global Availability and Performance Engineer</p>
+  
+  <div class="author-meta">
+    <span class="author-location icon-location">the internet</span>
+    <span class="author-link icon-link"><a href="https://osgav.run/">https://osgav.run/</a></span>
+  </div>
+</section>
+
+
+
+    
+<section class="share">
+  <h4>Share this post</h4>
+  <a class="icon-twitter" style="font-size: 1.4em" href="https://twitter.com/share?text=hugo%20--%3e%20https%3a%2f%2fosgav.run&amp;url=https%3a%2f%2fosgav.run%2fpost%2fhugo-to-https%2f"
+      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+      <span class="hidden">Twitter</span>
+  </a>
+  <a class="icon-facebook" style="font-size: 1.4em" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fosgav.run%2fpost%2fhugo-to-https%2f"
+      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+      <span class="hidden">Facebook</span>
+  </a>
+  <a class="icon-pinterest" style="font-size: 1.4em" href="http://pinterest.com/pin/create/button/?url=https%3a%2f%2fosgav.run%2fpost%2fhugo-to-https%2f&amp;description=hugo%20--%3e%20https%3a%2f%2fosgav.run"
+      onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+      <span class="hidden">Pinterest</span>
+  </a>
+  <a class="icon-google-plus" style="font-size: 1.4em" href="https://plus.google.com/share?url=https%3a%2f%2fosgav.run%2fpost%2fhugo-to-https%2f"
+     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+      <span class="hidden">Google+</span>
+  </a>
+</section>
+
+
+
+    
+
+
+
+
+  </footer>
+</article>
+
+</main>
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="">osgav</a> </section>
+        
+        <section class="poweredby">Proudly generated by <a class="icon-hugo" href="http://gohugo.io">HUGO</a>, with <a class="icon-theme" href="https://github.com/vjeantet/hugo-theme-casper">Casper</a> theme</section>
+        
+    </footer>
+    </div>
+    <script type="text/javascript" src="https://osgav.run/js/jquery.js"></script>
+    <script type="text/javascript" src="https://osgav.run/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://osgav.run/js/index.js"></script>
+    
+</body>
+</html>
+

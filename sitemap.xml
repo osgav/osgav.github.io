@@ -3,12 +3,22 @@
   
   <url>
     <loc>https://osgav.run/</loc>
-    <lastmod>2016-06-11T16:40:05+00:00</lastmod>
+    <lastmod>2016-06-12T11:33:49+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://osgav.run/page/hugo-markdown-cheatsheet/</loc>
+    <loc>https://osgav.run/post/hugo-to-https/</loc>
+    <lastmod>2016-06-12T11:33:49+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://osgav.run/page/projects/hugo-build-and-publish-workflow/</loc>
+    <lastmod>2016-06-11T20:10:08+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://osgav.run/page/projects/hugo-markdown-cheatsheet/</loc>
     <lastmod>2016-06-11T16:40:05+00:00</lastmod>
   </url>
   

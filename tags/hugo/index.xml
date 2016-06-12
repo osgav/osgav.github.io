@@ -6,8 +6,75 @@
     <description>Recent content in Hugo on osgav</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 11 Jun 2016 15:50:35 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 12 Jun 2016 11:33:49 +0000</lastBuildDate>
     <atom:link href="https://osgav.run/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>hugo --&gt; https://osgav.run</title>
+      <link>https://osgav.run/post/hugo-to-https/</link>
+      <pubDate>Sun, 12 Jun 2016 11:33:49 +0000</pubDate>
+      
+      <guid>https://osgav.run/post/hugo-to-https/</guid>
+      <description>&lt;p&gt;I stumbled across the Hugo static site generator recently and after reading a little and watching a &lt;a href=&#34;https://gohugo.io/overview/quickstart/&#34;&gt;short video&lt;/a&gt; (01:08) I thought it looked pretty interesting and worth trying out. It&amp;rsquo;s a fairly light blogging platform which can be used with GitHub Pages, which can then be topped with another service to provide SSL via a Let&amp;rsquo;s Encrypt certificate.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m still not 100% sure about the service hooking me up with the Let&amp;rsquo;s Encrypt SSL at the moment - we&amp;rsquo;ll see how it goes. Otherwise it looks like Hugo &amp;amp; GitHub Pages will provide a smooth experience for maintaining a blog of posts and pages.&lt;/p&gt;
+
+&lt;p&gt;The main steps I went through after clicking some link about &lt;em&gt;hugo&lt;/em&gt;&amp;hellip;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;discovered &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;tested blog locally with &lt;code&gt;hugo server&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;found really awesome responsive &lt;a href=&#34;https://github.com/vjeantet/hugo-theme-casper&#34;&gt;theme&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;wrote initial content&lt;/li&gt;
+&lt;li&gt;uploaded to GitHub Pages &lt;strong&gt;&lt;code&gt;https://osgav.github.io&lt;/code&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;purchased domain &lt;strong&gt;&lt;code&gt;osgav.run&lt;/code&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;configured &lt;a href=&#34;https://github.com/osgav/osgav.github.io&#34;&gt;osgav.github.io&lt;/a&gt; repo with &lt;a href=&#34;https://github.com/osgav/osgav.github.io/blob/master/CNAME&#34;&gt;CNAME&lt;/a&gt; file&lt;/li&gt;
+&lt;li&gt;registered for Kloudsec CDN service to provide Let&amp;rsquo;s Encrypt SSL&lt;/li&gt;
+&lt;li&gt;configured Kloudsec website to point at GitHub Pages site&lt;/li&gt;
+&lt;li&gt;configured &lt;code&gt;NS&lt;/code&gt; records with domain provider (provider&amp;rsquo;s nameservers)&lt;/li&gt;
+&lt;li&gt;configured &lt;code&gt;A&lt;/code&gt; records with domain provider (Kloudsec&amp;rsquo;s IPs)&lt;/li&gt;
+&lt;li&gt;updated Hugo site configuration to use &lt;strong&gt;&lt;code&gt;https://osgav.run&lt;/code&gt;&lt;/strong&gt; domain name&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I didn&amp;rsquo;t necessarily perform these in that exact order towards the end (and I&amp;rsquo;m not entirely certain that would be an optimum order) so consequently I did have a little bit of downtime between switching my site from osgav.github.io to osgav.run but I believe it was due to the new DNS not being fully live yet - so not the kind of downtime Kloudsec&amp;rsquo;s documentation advises they mitigate against.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;wrote initial content&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&amp;hellip;actually consisted of thoroughly digging through the project files and getting a grasp of its structure, setting up the menu and theming and looking at changes I&amp;rsquo;d like to make that aren&amp;rsquo;t so simple. While doing this I also started writing a few short scripts and created a cheatsheet to help make writing and publishing blog posts easier.&lt;/p&gt;
+
+&lt;p&gt;I still have plenty to learn about Hugo so I will no doubt revisit these in future, but I&amp;rsquo;ve written a bit about the build process (yet to automate publishing) and the cheatsheet I&amp;rsquo;ve started here:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://osgav.run/page/hugo-build-and-publish-workflow&#34;&gt;Hugo Build and Publish Workflow&lt;/a&gt; (in progress)&lt;br /&gt;
+&lt;a href=&#34;https://osgav.run/page/hugo-markdown-cheatsheet&#34;&gt;Hugo Markdown Cheatsheet&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;GitHub has a lot of relevant help pages for setting up a GitHub Pages site and configuring a custom domain. I read through many of them, which I&amp;rsquo;ve listed below - if you&amp;rsquo;re thinking about setting up GitHub Pages with a custom domain and powering it with Hugo, hopefully some of the hints I&amp;rsquo;ve mentioned will be useful alongside the GitHub documentation and other material you read&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://help.github.com/articles/quick-start-setting-up-a-custom-domain/&#34;&gt;https://help.github.com/articles/quick-start-setting-up-a-custom-domain/&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://help.github.com/articles/setting-up-your-pages-site-repository/&#34;&gt;https://help.github.com/articles/setting-up-your-pages-site-repository/&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://help.github.com/articles/setting-up-an-apex-domain-and-www-subdomain/&#34;&gt;https://help.github.com/articles/setting-up-an-apex-domain-and-www-subdomain/&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://help.github.com/articles/about-supported-custom-domains/#apex-domains&#34;&gt;https://help.github.com/articles/about-supported-custom-domains/#apex-domains&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://help.github.com/articles/using-a-custom-domain-with-github-pages/&#34;&gt;https://help.github.com/articles/using-a-custom-domain-with-github-pages/&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://help.github.com/articles/about-supported-custom-domains/&#34;&gt;https://help.github.com/articles/about-supported-custom-domains/&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://help.github.com/articles/setting-up-an-apex-domain/&#34;&gt;https://help.github.com/articles/setting-up-an-apex-domain/&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://help.github.com/articles/user-organization-and-project-pages/&#34;&gt;https://help.github.com/articles/user-organization-and-project-pages/&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://help.github.com/articles/creating-project-pages-manually/&#34;&gt;https://help.github.com/articles/creating-project-pages-manually/&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://help.github.com/articles/securing-your-github-pages-site-with-https/&#34;&gt;https://help.github.com/articles/securing-your-github-pages-site-with-https/&lt;/a&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;The extra layer - Kloudsec - providing the Let&amp;rsquo;s Encrypt SSL is necessary because GitHub Pages do not currently support SSL on custom domains.&lt;/p&gt;
+
+&lt;p&gt;You can have SSL on a *.github.io domain or plain HTTP on a custom domain.&lt;/p&gt;
+
+&lt;p&gt;While reading into this I gathered CloudFlare is a popular solution but people do have some concerns over certain configuration options - by using Kloudsec I am by no means using the most optimally configurable and secure solution but it is &lt;em&gt;very easy&lt;/em&gt; to get SSL enabled for the visitor &amp;ndash;&amp;gt; Kloudsec edge portion of the journey.&lt;/p&gt;
+
+&lt;p&gt;I haven&amp;rsquo;t dug particularly deep into this but it may be possible for CloudFlare to serve out a HTTPS custom domain from the edge and communicate with a HTTPS GitHub Pages origin (where you haven&amp;rsquo;t configured a custom domain so are still on HTTPS *.github.io) - so for those who want a particularly secure static blog that may be the thing to do&amp;hellip;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Also while reading into all of this, I stumbled across a colleague&amp;rsquo;s personal blog that amusingly has the same theme (the original) for another blogging platform - Ghost. And is hostly in an entirely different way, but produces a very similar output :) &lt;a href=&#34;https://iainjp.com/&#34;&gt;https://iainjp.com/&lt;/a&gt; - &lt;a href=&#34;https://iainjp.com/from-jekyll-to-ghost/&#34;&gt;From Jekyll to Ghost&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
     
     <item>
       <title>ZER0D0TS</title>
